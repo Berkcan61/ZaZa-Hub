@@ -3,7 +3,7 @@ local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/d
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 
 local Window = Fluent:CreateWindow({
-    Title = "ZaZa Hub  0.1.0",
+    Title = "ZaZa Hub  0.1.2",
     SubTitle = "by Brxyk_",
     TabWidth = 160,
     Size = UDim2.fromOffset(580, 460),
@@ -305,18 +305,23 @@ PlayerSection:AddSlider("SpeedSlider", {
     end
 })
 
--- Sprungkraft-Schieberegler
-PlayerSection:AddSlider("JumpSlider", {
+-- Sprungkraft-Eingabefeld
+local Input = PlayerSection:AddInput("JumpInput", {
     Title = "Jump power",
-    Description = "Changes the jump power",
-    Default = 50,
-    Min = 30,
-    Max = 10000,
-    Rounding = 0,
+    Default = "50", -- Standardwert als String
+    Placeholder = "Enter jump power",
+    Numeric = true, -- Nur Zahlen zulassen
+    Finished = false, -- Callback nur bei Drücken von Enter
     Callback = function(Value)
-        humanoid.JumpPower = Value
+        humanoid.JumpPower = tonumber(Value) -- Wert in Zahl umwandeln
     end
 })
+
+-- Optional: Wenn der Input sich ändert, kann die Callback-Funktion aktualisiert werden
+Input:OnChanged(function()
+    print("Input updated:", Input.Value)
+end)
+
 
 local PlayerSection = Tabs.Spieler:AddSection("Name")
 
@@ -508,6 +513,55 @@ Dropdown:OnChanged(function(Value)
         end
     end
 end)
+
+-- Füge das Dropdown-Menü hinzu
+local PlayerDropdown = Tabs.TeleportTab:AddDropdown("TeleportToPlayerDropdown", {
+    Title = "Teleport to player",
+    Values = {"No players online"},
+    Multi = false,
+    Default = 1,
+})
+
+-- Funktion, um das Dropdown mit den online Spielern zu aktualisieren
+local function UpdatePlayerList()
+    local playerNames = {}
+    
+    -- Hole alle online Spieler
+    for _, player in pairs(Players:GetPlayers()) do
+        if player ~= LocalPlayer then -- Entferne den eigenen Spieler aus der Liste
+            table.insert(playerNames, player.Name)
+        end
+    end
+    
+    -- Wenn keine Spieler online sind, setze den Wert im Dropdown auf "No players online"
+    if #playerNames == 0 then
+        playerNames = {"No players online"}
+    end
+    
+    PlayerDropdown:SetValues(playerNames)  -- Setze die Werte im Dropdown
+end
+
+-- Rufe die UpdatePlayerList Funktion auf, wenn der Spieler beitritt oder das Spieler-Event ausgelöst wird
+Players.PlayerAdded:Connect(UpdatePlayerList)
+Players.PlayerRemoving:Connect(UpdatePlayerList)
+
+-- Teleport-Logik beim Auswählen eines Spielers im Dropdown
+PlayerDropdown:OnChanged(function(selectedPlayerName)
+    -- Überprüfe, ob ein Spieler im Dropdown ausgewählt wurde
+    if selectedPlayerName and selectedPlayerName ~= "No players online" then
+        -- Suche nach dem ausgewählten Spieler
+        local targetPlayer = Players:FindFirstChild(selectedPlayerName)
+        
+        -- Teleportiere den Spieler, wenn der Spieler existiert
+        if targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
+            LocalPlayer.Character:SetPrimaryPartCFrame(targetPlayer.Character.HumanoidRootPart.CFrame)
+        end
+    end
+end)
+
+-- Initialisiere die Liste der Spieler zu Beginn
+UpdatePlayerList()
+
 
 Tabs.MiscTab:AddButton({
     Title = "Button",
