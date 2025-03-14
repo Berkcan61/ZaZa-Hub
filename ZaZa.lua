@@ -17,6 +17,7 @@ local Tabs = {
     ESP = Window:AddTab({ Title = "ESP", Icon = "eye" }),
     Spieler = Window:AddTab({ Title = "Player", Icon = "user" }),
     Aimbot = Window:AddTab({ Title = "Aimbot", Icon = "crosshair" }),
+    TeleportTab = Window:AddTab({ Title = "Teleport", Icon = "locate-fixed" }),
     MiscTab = Window:AddTab({ Title = "Misc", Icon = "misc" }),
     Settings = Window:AddTab({ Title = "Settings", Icon = "settings" }),
     Credits = Window:AddTab({ Title = "Credits", Icon = "info" })
@@ -309,8 +310,8 @@ PlayerSection:AddSlider("JumpSlider", {
     Title = "Jump power",
     Description = "Changes the jump power",
     Default = 50,
-    Min = 0,
-    Max = 1000000,
+    Min = 30,
+    Max = 500,
     Rounding = 0,
     Callback = function(Value)
         humanoid.JumpPower = Value
@@ -451,6 +452,62 @@ AimbotSection:AddSlider("Smoothness", {
         Aim_Smoothness = value
     end
 })
+
+local savedLocations = {}  -- Hier werden die gespeicherten Orte gespeichert
+local locationNames = {}   -- Namen für das Dropdown-Menü
+
+-- Dropdown-Menü erstellen
+local Dropdown = Tabs.TeleportTab:AddDropdown("TeleportDropdown", {
+    Title = "Teleport to...",
+    Values = {"No location saved"},
+    Multi = false,
+    Default = 1,
+})
+
+-- Speichern eines neuen Ortes
+Tabs.TeleportTab:AddButton({
+    Title = "Save location",
+    Description = "Save your current location",
+    Callback = function()
+        local player = game.Players.LocalPlayer
+        if player and player.Character and player.Character.PrimaryPart then
+            if #savedLocations < 5 then
+                local pos = player.Character.PrimaryPart.Position
+                table.insert(savedLocations, pos)
+                table.insert(locationNames, "Location " .. #savedLocations)
+                
+                Dropdown:SetValues(locationNames) -- Dropdown-Liste aktualisieren
+                Window:Dialog({
+                    Title = "Location saved.",
+                    Content = "Your location has been saved. (" .. #savedLocations .. "/5)",
+                    Buttons = { { Title = "Okay" } }
+                })
+            else
+                Window:Dialog({
+                    Title = "Storage full.",
+                    Content = "You can save up to 5 locations.",
+                    Buttons = { { Title = "Okay" } }
+                })
+            end
+        end
+    end
+})
+
+-- Teleport-Logik beim Wechsel des Dropdowns
+Dropdown:OnChanged(function(Value)
+    local index = table.find(locationNames, Value) -- Finde den gewählten Ort in der Liste
+    if index and savedLocations[index] then
+        local player = game.Players.LocalPlayer
+        if player and player.Character and player.Character.PrimaryPart then
+            player.Character:SetPrimaryPartCFrame(CFrame.new(savedLocations[index]))
+            Window:Dialog({
+                Title = "Teleported!",
+                Content = "You have been teleported to '" .. Value .. "'.",
+                Buttons = { { Title = "Okay" } }
+            })
+        end
+    end
+end)
 
 Tabs.MiscTab:AddButton({
     Title = "Button",
