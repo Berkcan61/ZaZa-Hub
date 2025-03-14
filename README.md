@@ -1,6 +1,6 @@
 # ZaZa Hub
 
-by Brxyk_
+by Brxyk_ #berkcan61
 
 ZaZa Hub is a powerful and customizable script for Roblox, providing a variety of features to enhance gameplay. It integrates seamlessly with the Fluent GUI framework, offering a user-friendly interface with customizable themes, controls, and settings. The script includes various modules, such as:
 
