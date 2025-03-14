@@ -309,8 +309,8 @@ PlayerSection:AddSlider("JumpSlider", {
     Title = "Jump power",
     Description = "Changes the jump power",
     Default = 50,
-    Min = 30,
-    Max = 500,
+    Min = 0,
+    Max = 10000,
     Rounding = 0,
     Callback = function(Value)
         humanoid.JumpPower = Value
