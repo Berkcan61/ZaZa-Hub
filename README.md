@@ -6,6 +6,21 @@ ZaZa Hub is a powerful and customizable script for Roblox, providing a variety o
 
 ESP (Extra Sensory Perception): Displays boxes, lines, and player names around other players, along with health bars and distance indicators for in-game targets. Aimbot: Automatically aims at the closest player to the cursor with customizable smoothness for a more natural feel. Fly: Allows the player to fly around the map with adjustable flight speed. Speed & Jump Power: Modifies the player's walking speed and jump height. Noclip: Lets the player walk through walls and other obstacles. Name Changer: Alters the player's displayed in-game name locally. Save & Interface Management: Save and load custom configurations, themes, and settings using the SaveManager and InterfaceManager add-ons. This script provides an intuitive and feature-packed experience for Roblox users looking for an edge in gameplay, with a focus on customization and ease of use.
 
+**Changelog - Version 0.1.3**
+
++ Aimbot code has been completely rewritten.
++ Added: You can now change the color of the FOV and the locked FOV.
++ Added: New toggle for Rainbow FOV.
++ Added: New slider to adjust FOV thickness.
++ Added: Option to fill the FOV (Filled FOV).
++ Added: New sections for Aimbot, FOV settings, and Rainbow FOV.
+
+**Future Updates:**
+- A slider will be added for controlling the speed of the Rainbow FOV.
+
+**Known Issues:**
+- You need to adjust the FOV radius slider once for the Aimbot to work.
+
 # Changelog - Version 0.1.2
 
 - Replaced JumpSlider with an input field for a better experience, allowing you to use your desired jump force in different games.
