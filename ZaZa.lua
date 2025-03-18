@@ -3,7 +3,7 @@ local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/d
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 
 local Window = Fluent:CreateWindow({
-    Title = "ZaZa Hub  0.1.2",
+    Title = "ZaZa Hub  0.1.3",
     SubTitle = "by Brxyk_",
     TabWidth = 160,
     Size = UDim2.fromOffset(580, 460),
