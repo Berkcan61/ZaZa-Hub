@@ -1,6 +1,6 @@
 # Load Script:
 
-_loadstring(game:HttpGet("https://raw.githubusercontent.com/Berkcan61/ZaZa-Hub/refs/heads/main/ZaZa.lua"))()_
+´loadstring(game:HttpGet("https://raw.githubusercontent.com/Berkcan61/ZaZa-Hub/refs/heads/main/ZaZa.lua"))()´
 
 # ZaZa Hub
 
