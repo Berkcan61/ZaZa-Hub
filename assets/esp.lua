@@ -123,3 +123,9 @@ local function CreateESP(player)
         end
     end)
 end
+
+for _, player in pairs(Players:GetPlayers()) do
+    CreateESP(player)
+end
+
+Players.PlayerAdded:Connect(CreateESP)
