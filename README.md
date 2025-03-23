@@ -12,6 +12,28 @@ ZaZa Hub is a powerful and customizable script for Roblox, providing a variety o
 
 ESP (Extra Sensory Perception): Displays boxes, lines, and player names around other players, along with health bars and distance indicators for in-game targets. Aimbot: Automatically aims at the closest player to the cursor with customizable smoothness for a more natural feel. Fly: Allows the player to fly around the map with adjustable flight speed. Speed & Jump Power: Modifies the player's walking speed and jump height. Noclip: Lets the player walk through walls and other obstacles. Name Changer: Alters the player's displayed in-game name locally. Save & Interface Management: Save and load custom configurations, themes, and settings using the SaveManager and InterfaceManager add-ons. This script provides an intuitive and feature-packed experience for Roblox users looking for an edge in gameplay, with a focus on customization and ease of use.
 
+### **Changelog V1 - Release Date: 2025-03-25**
+
+#### **New Features:**
+- **Color Pickers**: Added four color pickers to dynamically change the appearance of ESP elements:
+  1. **Box Colorpicker**: Change the color of the ESP box (default: red, `Color3.fromRGB(255, 0, 0)`).
+  2. **Line Colorpicker**: Change the color of the ESP lines (default: green, `Color3.fromRGB(0, 255, 0)`).
+  3. **Name Colorpicker**: Change the color of the player names (default: white, `Color3.fromRGB(255, 255, 255)`).
+  4. **Distance Colorpicker**: Change the color of the distance text (default: blue, `Color3.fromRGB(0, 255, 255)`).
+  - **Callback**: Each color change updates the respective ESP element in real-time.
+
+#### **Other Changes:**
+- **X-ray Functionality**: Added an X-ray effect that makes non-human parts semi-transparent.
+  - Implemented a toggle UI element to enable or disable the X-ray effect.
+  - Transparency changes apply dynamically based on the toggle state.
+
+#### **Code Enhancements:**
+- **Variable Name Clarifications**: Adjusted some variable names to make their purpose clearer.
+- **Direct Character Access**: Introduced a local variable `character` in the `RenderStepped` function to reduce repetition.
+
+### **Summary:**
+This release focuses on improving the **maintainability**, and **organization** of the code while adding new features such as color pickers for dynamic customization and X-ray functionality for enhanced visibility. The core ESP functionality remains unchanged, but overall usability has been significantly improved.
+
 # Changelog - Version 0.1.3
 
 + Aimbot code has been completely rewritten.
