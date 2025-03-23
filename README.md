@@ -16,10 +16,10 @@ ESP (Extra Sensory Perception): Displays boxes, lines, and player names around o
 
 #### **New Features:**
 - **Color Pickers**: Added four color pickers to dynamically change the appearance of ESP elements:
-  1. **Box Colorpicker**: Change the color of the ESP box (default: red, `Color3.fromRGB(255, 0, 0)`).
-  2. **Line Colorpicker**: Change the color of the ESP lines (default: green, `Color3.fromRGB(0, 255, 0)`).
-  3. **Name Colorpicker**: Change the color of the player names (default: white, `Color3.fromRGB(255, 255, 255)`).
-  4. **Distance Colorpicker**: Change the color of the distance text (default: blue, `Color3.fromRGB(0, 255, 255)`).
+  + **Box Colorpicker**: Change the color of the ESP box (default: red, `Color3.fromRGB(255, 0, 0)`).
+  + **Line Colorpicker**: Change the color of the ESP lines (default: green, `Color3.fromRGB(0, 255, 0)`).
+  + **Name Colorpicker**: Change the color of the player names (default: white, `Color3.fromRGB(255, 255, 255)`).
+  + **Distance Colorpicker**: Change the color of the distance text (default: blue, `Color3.fromRGB(0, 255, 255)`).
   - **Callback**: Each color change updates the respective ESP element in real-time.
 
 #### **Other Changes:**
