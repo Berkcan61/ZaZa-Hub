@@ -1,3 +1,7 @@
+local Tabs = {
+    ESP = Window:AddTab({ Title = "ESP", Icon = "eye" })
+}
+
 local ESP_Boxes_Enabled = false
 local ESP_Distance_Enabled = false
 local ESP_Lines_Enabled = false
