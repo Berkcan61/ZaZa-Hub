@@ -12,7 +12,17 @@ ZaZa Hub is a powerful and customizable script for Roblox, providing a variety o
 
 ESP (Extra Sensory Perception): Displays boxes, lines, and player names around other players, along with health bars and distance indicators for in-game targets. Aimbot: Automatically aims at the closest player to the cursor with customizable smoothness for a more natural feel. Fly: Allows the player to fly around the map with adjustable flight speed. Speed & Jump Power: Modifies the player's walking speed and jump height. Noclip: Lets the player walk through walls and other obstacles. Name Changer: Alters the player's displayed in-game name locally. Save & Interface Management: Save and load custom configurations, themes, and settings using the SaveManager and InterfaceManager add-ons. This script provides an intuitive and feature-packed experience for Roblox users looking for an edge in gameplay, with a focus on customization and ease of use.
 
-# Changelog V1 - Release Date: 2025-03-25
+# Changelog V1.1.0 - Release Date: 2025-03-24
+
+- Added a dynamic loading screen for ZaZa Hub.
+- The loading screen includes a loading bar with changing colors (blue to yellow to green) based on the loading progress.
+- Implemented animated text for loading stages: "Loading resources...", "Preparing game objects...", "Almost done...", and "Done!".
+- The loading bar size and color animate smoothly with tween effects.
+- Added a subtle text animation where the loading message "wobbles" to enhance visual appeal.
+- The loading bar progress is dynamically updated and displays percentage values.
+- Upon completion of the loading process, the loading screen elements fade out smoothly.
+
+# Changelog V1 - Release Date: 2025-03-23
 
 #### **New Features:**
   + **Colorpicker**:
