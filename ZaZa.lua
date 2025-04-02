@@ -760,52 +760,42 @@ BarTween.Completed:Connect(function()
         
                 --// Functions
         
+                local function CancelLock()
+                    Environment.Locked = nil
+                    Running = false
+                    if Animation and Animation.Play then -- Sicherstellen, dass Animation existiert
+                        Animation:Cancel()
+                    end
+                    if Environment.FOVCircle then
+                        Environment.FOVCircle.Color = Environment.FOVSettings.Color
+                    end
+                end
+        
                 local function GetClosestPlayer()
                     if not Environment.Locked then
                         RequiredDistance = (Environment.FOVSettings.Enabled and Environment.FOVSettings.Amount or 2000)
-                
-                        local allCharacters = {}
-                
-                        -- Spieler hinzufügen
+        
                         for _, v in next, Players:GetPlayers() do
-                            if v ~= LocalPlayer and v.Character and v.Character:FindFirstChild(Environment.Settings.LockPart) and v.Character:FindFirstChildOfClass("Humanoid") then
-                                table.insert(allCharacters, v.Character)
-                            end
-                        end
-                
-                        -- NPCs hinzufügen
-                        for _, model in next, workspace:GetChildren() do
-                            if model:IsA("Model") and model:FindFirstChild(Environment.Settings.LockPart) and model:FindFirstChildOfClass("Humanoid") then
-                                table.insert(allCharacters, model)
-                            end
-                        end
-                
-                        -- Ziel finden
-                        for _, char in next, allCharacters do
-                            if char:FindFirstChild(Environment.Settings.LockPart) and char:FindFirstChildOfClass("Humanoid") then
-                                if Environment.Settings.TeamCheck and char:FindFirstChild("HumanoidRootPart") and char:FindFirstChild("HumanoidRootPart"):FindFirstChild("Team") and char.HumanoidRootPart.Team.Value == LocalPlayer.Team then 
-                                    continue 
-                                end
-                                if Environment.Settings.AliveCheck and char:FindFirstChildOfClass("Humanoid").Health <= 0 then 
-                                    continue 
-                                end
-                                if Environment.Settings.WallCheck and #(Camera:GetPartsObscuringTarget({char[Environment.Settings.LockPart].Position}, char:GetDescendants())) > 0 then 
-                                    continue 
-                                end
-                
-                                local Vector, OnScreen = Camera:WorldToViewportPoint(char[Environment.Settings.LockPart].Position)
-                                local Distance = (Vector2(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y) - Vector2(Vector.X, Vector.Y)).Magnitude
-                
-                                if Distance < RequiredDistance and OnScreen then
-                                    RequiredDistance = Distance
-                                    Environment.Locked = char
+                            if v ~= LocalPlayer then
+                                if v.Character and v.Character:FindFirstChild(Environment.Settings.LockPart) and v.Character:FindFirstChildOfClass("Humanoid") then
+                                    if Environment.Settings.TeamCheck and v.Team == LocalPlayer.Team then continue end
+                                    if Environment.Settings.AliveCheck and v.Character:FindFirstChildOfClass("Humanoid").Health <= 0 then continue end
+                                    if Environment.Settings.WallCheck and #(Camera:GetPartsObscuringTarget({v.Character[Environment.Settings.LockPart].Position}, v.Character:GetDescendants())) > 0 then continue end
+        
+                                    local Vector, OnScreen = Camera:WorldToViewportPoint(v.Character[Environment.Settings.LockPart].Position)
+                                    local Distance = (Vector2(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y) - Vector2(Vector.X, Vector.Y)).Magnitude
+        
+                                    if Distance < RequiredDistance and OnScreen then
+                                        RequiredDistance = Distance
+                                        Environment.Locked = v
+                                    end
                                 end
                             end
                         end
-                    elseif (Vector2(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y) - Vector2(Camera:WorldToViewportPoint(Environment.Locked[Environment.Settings.LockPart].Position).X, Camera:WorldToViewportPoint(Environment.Locked[Environment.Settings.LockPart].Position).Y)).Magnitude > RequiredDistance then
+                    elseif (Vector2(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y) - Vector2(Camera:WorldToViewportPoint(Environment.Locked.Character[Environment.Settings.LockPart].Position).X, Camera:WorldToViewportPoint(Environment.Locked.Character[Environment.Settings.LockPart].Position).Y)).Magnitude > RequiredDistance then
                         CancelLock()
                     end
-                end  
+                end
         
                 --// Typing Check
         
