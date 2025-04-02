@@ -191,7 +191,7 @@ BarTween.Completed:Connect(function()
                 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
         
                 local Window = Fluent:CreateWindow({
-                    Title = "ZaZa Hub - v1.1.0",
+                    Title = "ZaZa Hub - v1.1.1",
                     SubTitle = "by Brxyk_",
                     TabWidth = 160,
                     Size = UDim2.fromOffset(580, 460),
