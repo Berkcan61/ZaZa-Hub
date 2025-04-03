@@ -773,7 +773,7 @@ BarTween.Completed:Connect(function()
         
                 local function GetClosestPlayer()
                     if not Environment.Locked then
-                        RequiredDistance = (Environment.FOVSettings.Enabled and Environment.FOVSettings.Amount or 2000)
+                        RequiredDistance = (Environment.FOVSettings.Enabled and tonumber(Environment.FOVSettings.Amount) or 2000)
         
                         for _, v in next, Players:GetPlayers() do
                             if v ~= LocalPlayer then
@@ -795,7 +795,7 @@ BarTween.Completed:Connect(function()
                     elseif (Vector2(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y) - Vector2(Camera:WorldToViewportPoint(Environment.Locked.Character[Environment.Settings.LockPart].Position).X, Camera:WorldToViewportPoint(Environment.Locked.Character[Environment.Settings.LockPart].Position).Y)).Magnitude > RequiredDistance then
                         CancelLock()
                     end
-                end
+                end      
         
                 --// Typing Check
         
@@ -949,7 +949,7 @@ BarTween.Completed:Connect(function()
                 -- GUI Options (Toggle, Slider)
                 local AimbotSection = Tabs.Aimbot:AddSection("Aimbot")
         
-                AimbotSection:AddToggle("AimbotTogToggle FOV Circlegle", {
+                AimbotSection:AddToggle("Aimbot", {
                     Title = "Aimbot",
                     Description = "Automatically locks onto the nearest target within the FOV",
                     Default = false,
