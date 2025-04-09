@@ -21,7 +21,7 @@ ESP (Extra Sensory Perception): Displays boxes, lines, and player names around o
 
 **Added:**
 - **UNC Tester:**
-   - A new UNC tester has been added, based on an older version. While it lacks some of the new features, it provides a solid overview and remains fully functional.
+   - A new UNC tester has been added. While it lacks some of the new features, it provides a solid overview and remains fully functional.
    - **Usage:**  
       - The button can be found in the "Misc" tab. When you click the button, you will be reminded to proceed with caution. This test is very performance-heavy and may cause crashes on older PCs, so avoid using it if you're on a low-end system.
 
