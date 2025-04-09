@@ -21,16 +21,19 @@ ESP (Extra Sensory Perception): Displays boxes, lines, and player names around o
 
 **Added:**
 - **UNC Tester:**
-   - A new UNC tester has been added. While it lacks some of the new features, it provides a solid overview and remains fully functional.
+   - A new UNC tester has been added, which includes most of the functions, but not all. Since it's relatively new, the results may significantly differ from the actual ones.
    - **Usage:**  
       - The button can be found in the "Misc" tab. When you click the button, you will be reminded to proceed with caution. This test is very performance-heavy and may cause crashes on older PCs, so avoid using it if you're on a low-end system.
+
+- **Anti-Cheat Scanner:**  
+   - A new anti-cheat scanner has been introduced to help detect potential cheats in the game.
 
 - **More UNC:**
    - The "More UNC" option unlocks additional functions that your executor may not support. **Warning:** "More UNC" does not necessarily mean that you will get more UNC from the UNC test.
    - **Note:** The "UNC tests" and "More UNC" features are relatively new and still contain bugs. The results may not be 100% accurate. I will fix these issues as soon as possible.
 
-- **Anti-Cheat Scanner:**  
-   - A new anti-cheat scanner has been introduced to help detect potential cheats in the game.
+**Removed:**
+- The **loading screen** has been completely removed due to numerous bugs and because it was considered unnecessary.
 
 **Contact:**  
 - If you encounter any issues, feel free to reach out via Discord: **Brxyk_ #berkcan61**
