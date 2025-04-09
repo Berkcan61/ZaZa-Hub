@@ -12,6 +12,33 @@ ZaZa Hub is a powerful and customizable script for Roblox, providing a variety o
 
 ESP (Extra Sensory Perception): Displays boxes, lines, and player names around other players, along with health bars and distance indicators for in-game targets. Aimbot: Automatically aims at the closest player to the cursor with customizable smoothness for a more natural feel. Fly: Allows the player to fly around the map with adjustable flight speed. Speed & Jump Power: Modifies the player's walking speed and jump height. Noclip: Lets the player walk through walls and other obstacles. Name Changer: Alters the player's displayed in-game name locally. Save & Interface Management: Save and load custom configurations, themes, and settings using the SaveManager and InterfaceManager add-ons. This script provides an intuitive and feature-packed experience for Roblox users looking for an edge in gameplay, with a focus on customization and ease of use.
 
+# Changelog Version 1.2.0  - Release Date: 2025-04-09
+
+**Performance Update:**
+- Cached key information such as mouse position and target info to reduce lag and provide a smoother experience.
+- Logic has been fully cleaned up for easier readability and improved reliability.
+- Consistent formatting to speed up updates and minimize future bugs.
+
+**Added:**
+- **UNC Tester:**
+   - A new UNC tester has been added, based on an older version. While it lacks some of the new features, it provides a solid overview and remains fully functional.
+   - **Usage:**  
+      - The button can be found in the "Misc" tab. When you click the button, you will be reminded to proceed with caution. This test is very performance-heavy and may cause crashes on older PCs, so avoid using it if you're on a low-end system.
+
+- **More UNC:**
+   - The "More UNC" option unlocks additional functions that your executor may not support. **Warning:** "More UNC" does not necessarily mean that you will get more UNC from the UNC test.
+   - **Note:** The "UNC tests" and "More UNC" features are relatively new and still contain bugs. The results may not be 100% accurate. I will fix these issues as soon as possible.
+
+- **Anti-Cheat Scanner:**  
+   - A new anti-cheat scanner has been introduced to help detect potential cheats in the game.
+
+**Contact:**  
+- If you encounter any issues, feel free to reach out via Discord: **Brxyk_ #berkcan61**
+
+**Future Updates:**
+- The Aimbot code will be completely rewritten due to numerous bugs and issues. Additionally, a toggle will be added to enable the aimbot to work with NPCs.
+- Performance updates to optimize the experience, especially when there are many players in the lobby.
+
 # Changelog Version 1.1.2  - Release Date: 2025-04-03
 
 Fixed:
