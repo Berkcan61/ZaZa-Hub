@@ -138,8 +138,8 @@ function ZaZa:CreateWindowButtons()
         TextSize = 18,
         Parent = self.Window,
         ZIndex = 10,  -- Sicherstellen, dass der Button oben ist
-        BackgroundTransparency = 1,  -- Unsichtbar machen
-        TextTransparency = 1,  -- Unsichtbar machen
+        BackgroundTransparency = 0.5,  -- Hintergrund transparent machen (während Text sichtbar bleibt)
+        TextTransparency = 0,  -- Text sichtbar
     })
 
     -- Minimieren-Button (Position und Design tauschen)
@@ -153,8 +153,8 @@ function ZaZa:CreateWindowButtons()
         TextSize = 18,
         Parent = self.Window,
         ZIndex = 10,  -- Sicherstellen, dass der Button oben ist
-        BackgroundTransparency = 1,  -- Unsichtbar machen
-        TextTransparency = 1,  -- Unsichtbar machen
+        BackgroundTransparency = 0.5,  -- Hintergrund transparent machen (während Text sichtbar bleibt)
+        TextTransparency = 0,  -- Text sichtbar
     })
 
     -- Vollbild-Button (Position und Design tauschen)
@@ -168,8 +168,8 @@ function ZaZa:CreateWindowButtons()
         TextSize = 18,
         Parent = self.Window,
         ZIndex = 10,  -- Sicherstellen, dass der Button oben ist
-        BackgroundTransparency = 1,  -- Unsichtbar machen
-        TextTransparency = 1,  -- Unsichtbar machen
+        BackgroundTransparency = 0.5,  -- Hintergrund transparent machen (während Text sichtbar bleibt)
+        TextTransparency = 0,  -- Text sichtbar
     })
 
     -- Hover-Effekt (Änderung der Hintergrundfarbe)
