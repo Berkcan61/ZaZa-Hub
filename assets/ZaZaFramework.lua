@@ -77,6 +77,9 @@ function ZaZa:CreateWindow(config)
     self.Tabs = {}
     self.CurrentTab = nil
 
+    -- Buttons für Minimize, Close und Fullscreen
+    self:CreateWindowButtons()
+
     -- Drag-Funktion aktivieren
     self:EnableDrag()
 
@@ -104,6 +107,61 @@ function ZaZa:EnableDrag()
 
     Mouse.Button1Up:Connect(function()
         dragging = false
+    end)
+end
+
+-- Buttons für Minimieren, Schließen und Vollbild
+function ZaZa:CreateWindowButtons()
+    -- Schließen-Button
+    self.CloseButton = Create("TextButton", {
+        Text = "X",
+        Size = UDim2.new(0, 30, 0, 30),
+        Position = UDim2.new(1, -40, 0, 10),
+        BackgroundColor3 = Color3.fromRGB(255, 0, 0),
+        TextColor3 = Color3.fromRGB(255, 255, 255),
+        Font = Enum.Font.GothamBold,
+        TextSize = 18,
+        Parent = self.Window
+    })
+
+    -- Minimieren-Button
+    self.MinimizeButton = Create("TextButton", {
+        Text = "-",
+        Size = UDim2.new(0, 30, 0, 30),
+        Position = UDim2.new(1, -80, 0, 10),
+        BackgroundColor3 = Color3.fromRGB(0, 255, 0),
+        TextColor3 = Color3.fromRGB(255, 255, 255),
+        Font = Enum.Font.GothamBold,
+        TextSize = 18,
+        Parent = self.Window
+    })
+
+    -- Vollbild-Button
+    self.FullscreenButton = Create("TextButton", {
+        Text = "☐",
+        Size = UDim2.new(0, 30, 0, 30),
+        Position = UDim2.new(1, -120, 0, 10),
+        BackgroundColor3 = Color3.fromRGB(0, 0, 255),
+        TextColor3 = Color3.fromRGB(255, 255, 255),
+        Font = Enum.Font.GothamBold,
+        TextSize = 18,
+        Parent = self.Window
+    })
+
+    -- Schließen-Button Funktionalität
+    self.CloseButton.MouseButton1Click:Connect(function()
+        self.Gui:Destroy()  -- Fenster schließen
+    end)
+
+    -- Minimieren-Button Funktionalität
+    self.MinimizeButton.MouseButton1Click:Connect(function()
+        self.Window.Visible = false  -- Fenster minimieren
+    end)
+
+    -- Vollbild-Button Funktionalität
+    self.FullscreenButton.MouseButton1Click:Connect(function()
+        self.Window.Size = UDim2.fromScale(1, 1)  -- Fenster auf Vollbild setzen
+        self.Window.Position = UDim2.fromScale(0, 0)
     end)
 end
 
