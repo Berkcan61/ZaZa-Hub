@@ -86,13 +86,20 @@ function ZaZa:CreateWindow(config)
     return self
 end
 
---// Drag Funktion für das Fenster hinzufügen
 function ZaZa:EnableDrag()
     local dragging = false
     local dragStart, startPos
 
-    -- Titelbereich als Drag-Bereich verwenden
-    self.Title.MouseButton1Down:Connect(function()
+    -- Unsichtbaren Button für den Titelbereich erstellen
+    local DragButton = Create("TextButton", {
+        Size = UDim2.new(1, 0, 0, 40),  -- Gleiche Größe wie das Title Label
+        Position = UDim2.new(0, 0, 0, 0),
+        BackgroundTransparency = 1,
+        Text = "",
+        Parent = self.Window
+    })
+
+    DragButton.MouseButton1Down:Connect(function()
         dragging = true
         dragStart = Mouse.Position
         startPos = self.Window.Position
@@ -109,6 +116,7 @@ function ZaZa:EnableDrag()
         dragging = false
     end)
 end
+
 
 -- Buttons für Minimieren, Schließen und Vollbild
 function ZaZa:CreateWindowButtons()
