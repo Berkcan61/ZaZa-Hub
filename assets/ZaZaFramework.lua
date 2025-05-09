@@ -165,16 +165,19 @@ function ZaZa:CreateWindowButtons()
 
     -- Schließen-Button Funktionalität
     self.CloseButton.MouseButton1Click:Connect(function()
+        print("Schließen-Button geklickt")
         self.Gui:Destroy()  -- Fenster schließen
     end)
 
     -- Minimieren-Button Funktionalität
     self.MinimizeButton.MouseButton1Click:Connect(function()
+        print("Minimieren-Button geklickt")
         self.Window.Visible = false  -- Fenster minimieren
     end)
 
     -- Vollbild-Button Funktionalität
     self.FullscreenButton.MouseButton1Click:Connect(function()
+        print("Vollbild-Button geklickt")
         self.Window.Size = UDim2.fromScale(1, 1)  -- Fenster auf Vollbild setzen
         self.Window.Position = UDim2.fromScale(0, 0)
     end)
