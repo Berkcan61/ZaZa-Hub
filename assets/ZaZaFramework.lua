@@ -1,3 +1,5 @@
+--// ZaZaGUI.lua - dein eigenes ZaZa GUI System
+
 local ZaZa = {}
 ZaZa.__index = ZaZa
 
@@ -5,6 +7,7 @@ local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 
+-- Helper Funktion zum Erstellen von Instanzen
 local function Create(class, props)
     local obj = Instance.new(class)
     for k, v in pairs(props) do
@@ -13,9 +16,11 @@ local function Create(class, props)
     return obj
 end
 
+-- Hauptfunktion: Fenster erstellen
 function ZaZa:CreateWindow(config)
     local self = setmetatable({}, ZaZa)
 
+    -- ScreenGui
     self.Gui = Create("ScreenGui", {
         Name = "ZaZaGui",
         ResetOnSpawn = false,
@@ -23,6 +28,7 @@ function ZaZa:CreateWindow(config)
         Parent = game.CoreGui
     })
 
+    -- Hauptframe
     self.Window = Create("Frame", {
         Name = "MainWindow",
         Size = config.Size or UDim2.fromOffset(580, 460),
@@ -34,11 +40,13 @@ function ZaZa:CreateWindow(config)
         Parent = self.Gui
     })
 
+    -- UICorner
     Create("UICorner", {
         CornerRadius = UDim.new(0, 12),
         Parent = self.Window
     })
 
+    -- Titel
     self.Title = Create("TextLabel", {
         Text = config.Title or "ZaZa GUI",
         Size = UDim2.new(1, 0, 0, 40),
@@ -49,6 +57,7 @@ function ZaZa:CreateWindow(config)
         Parent = self.Window
     })
 
+    -- Tab Container
     self.TabButtons = Create("Frame", {
         Size = UDim2.new(0, config.TabWidth or 160, 1, -40),
         Position = UDim2.new(0, 0, 0, 40),
@@ -73,6 +82,7 @@ function ZaZa:CreateWindow(config)
     return self
 end
 
+-- Tabs hinzufügen
 function ZaZa:AddTab(tabConfig)
     local tab = {}
     tab.Button = Create("TextButton", {
@@ -104,10 +114,35 @@ function ZaZa:AddTab(tabConfig)
     return tab
 end
 
+-- Tab auswählen
 function ZaZa:SelectTab(index)
     if self.Tabs[index] then
         self.Tabs[index].Button:Fire("MouseButton1Click")
     end
+end
+
+-- Drag Funktion für das Fenster hinzufügen
+function ZaZa:EnableDrag()
+    local dragging = false
+    local dragStart, startPos
+
+    -- Titelbereich als Drag-Bereich verwenden
+    self.Title.MouseButton1Down:Connect(function()
+        dragging = true
+        dragStart = Mouse.Position
+        startPos = self.Window.Position
+    end)
+
+    Mouse.Move:Connect(function()
+        if dragging then
+            local delta = Mouse.Position - dragStart
+            self.Window.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+        end
+    end)
+
+    Mouse.Button1Up:Connect(function()
+        dragging = false
+    end)
 end
 
 return ZaZa
