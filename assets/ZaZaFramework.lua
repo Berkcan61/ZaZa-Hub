@@ -178,16 +178,12 @@ function ZaZa:CreateWindowButtons()
 
     -- Vollbild-Button Funktionalität
     self.FullscreenButton.MouseButton1Click:Connect(function()
-        -- Auf die Bildschirmgröße zugreifen
+    -- Auf die Bildschirmgröße zugreifen
         local screenSize = game.Workspace.CurrentCamera.ViewportSize
         
         -- Das Fenster (self.Window) auf die Bildschirmgröße setzen
         self.Window.Size = UDim2.fromOffset(screenSize.X, screenSize.Y)
         self.Window.Position = UDim2.fromOffset(0, 0)  -- Fenster an den oberen linken Rand setzen
-        
-        -- ScreenGui auf die gesamte Bildschirmgröße anpassen
-        self.Gui.Size = UDim2.fromOffset(screenSize.X, screenSize.Y)
-        self.Gui.Position = UDim2.fromOffset(0, 0)  -- ScreenGui auch am oberen linken Rand setzen
     end)
 end
 
