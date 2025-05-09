@@ -137,34 +137,69 @@ function ZaZa:CreateWindowButtons()
         Font = Enum.Font.GothamBold,
         TextSize = 18,
         Parent = self.Window,
-        ZIndex = 10  -- Sicherstellen, dass der Button oben ist
+        ZIndex = 10,  -- Sicherstellen, dass der Button oben ist
+        BackgroundTransparency = 1,  -- Unsichtbar machen
+        TextTransparency = 1,  -- Unsichtbar machen
     })
 
-    -- Minimieren-Button
+    -- Minimieren-Button (Position und Design tauschen)
     self.MinimizeButton = Create("TextButton", {
         Text = "-",
         Size = UDim2.new(0, 30, 0, 30),
-        Position = UDim2.new(1, -80, 0, 10),
+        Position = UDim2.new(1, -120, 0, 10),
         BackgroundColor3 = Color3.fromRGB(0, 255, 0),
         TextColor3 = Color3.fromRGB(255, 255, 255),
         Font = Enum.Font.GothamBold,
         TextSize = 18,
         Parent = self.Window,
-        ZIndex = 10  -- Sicherstellen, dass der Button oben ist
+        ZIndex = 10,  -- Sicherstellen, dass der Button oben ist
+        BackgroundTransparency = 1,  -- Unsichtbar machen
+        TextTransparency = 1,  -- Unsichtbar machen
     })
 
-    -- Vollbild-Button
+    -- Vollbild-Button (Position und Design tauschen)
     self.FullscreenButton = Create("TextButton", {
         Text = "☐",
         Size = UDim2.new(0, 30, 0, 30),
-        Position = UDim2.new(1, -120, 0, 10),
+        Position = UDim2.new(1, -80, 0, 10),
         BackgroundColor3 = Color3.fromRGB(0, 0, 255),
         TextColor3 = Color3.fromRGB(255, 255, 255),
         Font = Enum.Font.GothamBold,
         TextSize = 18,
         Parent = self.Window,
-        ZIndex = 10  -- Sicherstellen, dass der Button oben ist
+        ZIndex = 10,  -- Sicherstellen, dass der Button oben ist
+        BackgroundTransparency = 1,  -- Unsichtbar machen
+        TextTransparency = 1,  -- Unsichtbar machen
     })
+
+    -- Hover-Effekt (Änderung der Hintergrundfarbe)
+    local function onButtonHover(button, hoverColor)
+        button.MouseEnter:Connect(function()
+            button.BackgroundColor3 = hoverColor
+        end)
+
+        button.MouseLeave:Connect(function()
+            button.BackgroundColor3 = button.BackgroundColor3 == hoverColor and button.BackgroundColor3 or Color3.fromRGB(0, 0, 0)  -- Standardfarbe zurücksetzen
+        end)
+    end
+
+    -- Klick-Effekt (Änderung der Hintergrundfarbe beim Klick)
+    local function onButtonClick(button, clickColor)
+        button.MouseButton1Click:Connect(function()
+            button.BackgroundColor3 = clickColor
+            wait(0.1)  -- Kurze Verzögerung für den Klick-Effekt
+            button.BackgroundColor3 = button.BackgroundColor3 == clickColor and Color3.fromRGB(0, 0, 0) or button.BackgroundColor3  -- Standardfarbe zurücksetzen
+        end)
+    end
+
+    -- Anwenden der Hover- und Klick-Effekte auf die Buttons
+    onButtonHover(self.CloseButton, Color3.fromRGB(255, 0, 0))  -- Beispielfarbe für Hover
+    onButtonHover(self.MinimizeButton, Color3.fromRGB(0, 255, 0))  -- Beispielfarbe für Hover
+    onButtonHover(self.FullscreenButton, Color3.fromRGB(0, 0, 255))  -- Beispielfarbe für Hover
+
+    onButtonClick(self.CloseButton, Color3.fromRGB(200, 0, 0))  -- Beispielfarbe für Klick
+    onButtonClick(self.MinimizeButton, Color3.fromRGB(0, 200, 0))  -- Beispielfarbe für Klick
+    onButtonClick(self.FullscreenButton, Color3.fromRGB(0, 0, 200))  -- Beispielfarbe für Klick
 
     -- Schließen-Button Funktionalität
     self.CloseButton.MouseButton1Click:Connect(function()
