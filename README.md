@@ -19,6 +19,35 @@ ESP (Extra Sensory Perception): Displays boxes, lines, and player names around o
    - A new **Godmode** toggle has been added.  
    - **Note:** This feature only works in certain games. You can find the toggle under the **Player** tab.
 
+**Changelog Version 1.2.2 - Release Date: 2025-05-09**
+**Added:**
+
+* **200+ New Emotes:**
+  Over 200 new emotes have been added to the emote system.
+
+**Changed:**
+
+* **Emote System Rewrite:**
+  The emote code has been completely rewritten. You can now open the emote menu using the new button in the "Emote" tab.
+
+**Removed:**
+
+* **Aimbot Code:**
+  The aimbot has been completely removed due to it no longer functioning properly. A new version will be added in a future update.
+
+**Updated:**
+
+* **UI Improvements (Anti-Cheat Scanner, UNC Tester, More UNC):**
+
+  * Improved performance
+  * UI is now draggable
+  * Clicking through the UI is no longer possible
+  * Added minimize functionality
+
+**Fixes:**
+
+* Various small bug fixes and performance adjustments.
+
 # Changelog Version 1.2.0  - Release Date: 2025-04-09
 
 **Performance Update:**
