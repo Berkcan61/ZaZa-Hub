@@ -194,21 +194,25 @@ function ZaZa:AddTab(tabConfig)
     })
 
     tab.Button.MouseButton1Click:Connect(function()
-        if self.CurrentTab then
-            self.CurrentTab.Content.Visible = false
-        end
-        tab.Content.Visible = true
-        self.CurrentTab = tab
+        self:ActivateTab(tab)
     end)
 
     table.insert(self.Tabs, tab)
     return tab
 end
 
+function ZaZa:ActivateTab(tab)
+    if self.CurrentTab then
+        self.CurrentTab.Content.Visible = false
+    end
+    tab.Content.Visible = true
+    self.CurrentTab = tab
+end
+
 -- Tab auswählen
 function ZaZa:SelectTab(index)
     if self.Tabs[index] then
-        self.Tabs[index].Button:Fire("MouseButton1Click")
+        self:ActivateTab(self.Tabs[index])
     end
 end
 
