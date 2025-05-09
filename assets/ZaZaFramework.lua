@@ -136,7 +136,8 @@ function ZaZa:CreateWindowButtons()
         TextColor3 = Color3.fromRGB(255, 255, 255),
         Font = Enum.Font.GothamBold,
         TextSize = 18,
-        Parent = self.Window
+        Parent = self.Window,
+        ZIndex = 10  -- Sicherstellen, dass der Button oben ist
     })
 
     -- Minimieren-Button
@@ -148,7 +149,8 @@ function ZaZa:CreateWindowButtons()
         TextColor3 = Color3.fromRGB(255, 255, 255),
         Font = Enum.Font.GothamBold,
         TextSize = 18,
-        Parent = self.Window
+        Parent = self.Window,
+        ZIndex = 10  -- Sicherstellen, dass der Button oben ist
     })
 
     -- Vollbild-Button
@@ -160,7 +162,8 @@ function ZaZa:CreateWindowButtons()
         TextColor3 = Color3.fromRGB(255, 255, 255),
         Font = Enum.Font.GothamBold,
         TextSize = 18,
-        Parent = self.Window
+        Parent = self.Window,
+        ZIndex = 10  -- Sicherstellen, dass der Button oben ist
     })
 
     -- Schließen-Button Funktionalität
