@@ -14,6 +14,37 @@ local function Create(class, props)
     return obj
 end
 
+function ZaZa:EnableDrag()
+    local dragging = false
+    local dragStart, startPos
+
+    -- Unsichtbaren Button für den Titelbereich erstellen
+    local DragButton = Create("TextButton", {
+        Size = UDim2.new(1, 0, 0, 40),  -- Gleiche Größe wie das Title Label
+        Position = UDim2.new(0, 0, 0, 0),
+        BackgroundTransparency = 1,
+        Text = "",
+        Parent = self.Window
+    })
+
+    DragButton.MouseButton1Down:Connect(function()
+        dragging = true
+        dragStart = Mouse.Position
+        startPos = self.Window.Position
+    end)
+
+    Mouse.Move:Connect(function()
+        if dragging then
+            local delta = Mouse.Position - dragStart
+            self.Window.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+        end
+    end)
+
+    Mouse.Button1Up:Connect(function()
+        dragging = false
+    end)
+end
+
 -- Hauptfunktion: Fenster erstellen
 function ZaZa:CreateWindow(config)
     local self = setmetatable({}, ZaZa)
@@ -85,38 +116,6 @@ function ZaZa:CreateWindow(config)
 
     return self
 end
-
-function ZaZa:EnableDrag()
-    local dragging = false
-    local dragStart, startPos
-
-    -- Unsichtbaren Button für den Titelbereich erstellen
-    local DragButton = Create("TextButton", {
-        Size = UDim2.new(1, 0, 0, 40),  -- Gleiche Größe wie das Title Label
-        Position = UDim2.new(0, 0, 0, 0),
-        BackgroundTransparency = 1,
-        Text = "",
-        Parent = self.Window
-    })
-
-    DragButton.MouseButton1Down:Connect(function()
-        dragging = true
-        dragStart = Mouse.Position
-        startPos = self.Window.Position
-    end)
-
-    Mouse.Move:Connect(function()
-        if dragging then
-            local delta = Mouse.Position - dragStart
-            self.Window.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-        end
-    end)
-
-    Mouse.Button1Up:Connect(function()
-        dragging = false
-    end)
-end
-
 
 -- Buttons für Minimieren, Schließen und Vollbild
 function ZaZa:CreateWindowButtons()
