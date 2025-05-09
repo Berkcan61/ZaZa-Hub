@@ -168,26 +168,26 @@ function ZaZa:CreateWindowButtons()
 
     -- Schließen-Button Funktionalität
     self.CloseButton.MouseButton1Click:Connect(function()
-        print("Schließen-Button geklickt")
         self.Gui:Destroy()  -- Fenster schließen
     end)
 
     -- Minimieren-Button Funktionalität
     self.MinimizeButton.MouseButton1Click:Connect(function()
-        print("Minimieren-Button geklickt")
         self.Window.Visible = false  -- Fenster minimieren
     end)
 
     -- Vollbild-Button Funktionalität
-    -- Vollbild-Button Funktionalität
     self.FullscreenButton.MouseButton1Click:Connect(function()
-        print("Vollbild-Button geklickt")
-        -- Fenster auf den gesamten Bildschirm setzen
-        self.Window.Size = UDim2.fromOffset(game.Workspace.CurrentCamera.ViewportSize.X, game.Workspace.CurrentCamera.ViewportSize.Y)
-        self.Window.Position = UDim2.fromOffset(0, 0)  -- Fenster an den oberen linken Bildschirmrand setzen
+        -- Auf die Bildschirmgröße zugreifen
+        local screenSize = game.Workspace.CurrentCamera.ViewportSize
         
-        -- ScreenGui auf den gesamten Bildschirm erweitern
-        self.Gui.Size = UDim2.fromOffset(game.Workspace.CurrentCamera.ViewportSize.X, game.Workspace.CurrentCamera.ViewportSize.Y)
+        -- Das Fenster (self.Window) auf die Bildschirmgröße setzen
+        self.Window.Size = UDim2.fromOffset(screenSize.X, screenSize.Y)
+        self.Window.Position = UDim2.fromOffset(0, 0)  -- Fenster an den oberen linken Rand setzen
+        
+        -- ScreenGui auf die gesamte Bildschirmgröße anpassen
+        self.Gui.Size = UDim2.fromOffset(screenSize.X, screenSize.Y)
+        self.Gui.Position = UDim2.fromOffset(0, 0)  -- ScreenGui auch am oberen linken Rand setzen
     end)
 end
 
