@@ -1,5 +1,3 @@
---// ZaZaGUI.lua - dein eigenes ZaZa GUI System
-
 local ZaZa = {}
 ZaZa.__index = ZaZa
 
@@ -79,7 +77,34 @@ function ZaZa:CreateWindow(config)
     self.Tabs = {}
     self.CurrentTab = nil
 
+    -- Drag-Funktion aktivieren
+    self:EnableDrag()
+
     return self
+end
+
+--// Drag Funktion für das Fenster hinzufügen
+function ZaZa:EnableDrag()
+    local dragging = false
+    local dragStart, startPos
+
+    -- Titelbereich als Drag-Bereich verwenden
+    self.Title.MouseButton1Down:Connect(function()
+        dragging = true
+        dragStart = Mouse.Position
+        startPos = self.Window.Position
+    end)
+
+    Mouse.Move:Connect(function()
+        if dragging then
+            local delta = Mouse.Position - dragStart
+            self.Window.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+        end
+    end)
+
+    Mouse.Button1Up:Connect(function()
+        dragging = false
+    end)
 end
 
 -- Tabs hinzufügen
@@ -119,30 +144,6 @@ function ZaZa:SelectTab(index)
     if self.Tabs[index] then
         self.Tabs[index].Button:Fire("MouseButton1Click")
     end
-end
-
--- Drag Funktion für das Fenster hinzufügen
-function ZaZa:EnableDrag()
-    local dragging = false
-    local dragStart, startPos
-
-    -- Titelbereich als Drag-Bereich verwenden
-    self.Title.MouseButton1Down:Connect(function()
-        dragging = true
-        dragStart = Mouse.Position
-        startPos = self.Window.Position
-    end)
-
-    Mouse.Move:Connect(function()
-        if dragging then
-            local delta = Mouse.Position - dragStart
-            self.Window.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-        end
-    end)
-
-    Mouse.Button1Up:Connect(function()
-        dragging = false
-    end)
 end
 
 return ZaZa
