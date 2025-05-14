@@ -12,6 +12,56 @@ ZaZa Hub is a powerful and customizable script for Roblox, providing a variety o
 
 ESP (Extra Sensory Perception): Displays boxes, lines, and player names around other players, along with health bars and distance indicators for in-game targets. Aimbot: Automatically aims at the closest player to the cursor with customizable smoothness for a more natural feel. Fly: Allows the player to fly around the map with adjustable flight speed. Speed & Jump Power: Modifies the player's walking speed and jump height. Noclip: Lets the player walk through walls and other obstacles. Name Changer: Alters the player's displayed in-game name locally. Save & Interface Management: Save and load custom configurations, themes, and settings using the SaveManager and InterfaceManager add-ons. This script provides an intuitive and feature-packed experience for Roblox users looking for an edge in gameplay, with a focus on customization and ease of use.
 
+# Changelog Version 1.2.3 - Release Date: 2025-05-14
+
+**Fixed:**
+
+* The issue where the script couldn't be executed due to a massive error (`attempt to call a nil value`) has been resolved.
+
+* **ZaZa Performance Benchmark - Features:**
+
+* **Part Creation:**
+
+  * Dynamic creation of **Parts** in the workspace
+  * Material selection (default: `Plastic`, selectable via textbox)
+  * Number of parts adjustable (default: 1000, via textbox)
+
+* **Auto-Cleanup:**
+
+  * Auto-destruction of created parts after a set time
+  * Cleanup time in seconds adjustable (default: 10 seconds)
+
+* **FPS Measurement:**
+
+  * FPS tracking during the benchmark
+  * Display of FPS rate at the end of the benchmark run
+  * Color-coded display of FPS depending on performance (green, orange, red)
+
+* **Progress Display:**
+
+  * Progress display during part creation, adjustable via a toggle button
+  * Display of current progress (parts created/total) in the info box
+
+* **Interactive Buttons:**
+
+  * Toggle button to turn the progress display on and off
+  * Start button to begin the benchmark
+  * Close button to close the GUI
+  * Progress text and FPS display clearly structured and color-coded
+
+* **Connection to RenderStepped:**
+
+  * FPS connection with `RunService.RenderStepped` to accurately measure FPS during the test
+
+* **Result Display:**
+
+  * Shows the time of the benchmark and the created parts
+  * Displays FPS based on performance
+
+* **Note:**
+
+  * This is a new feature of ZaZa, so bugs are expected. Please avoid using very large numbers (like millions), as this can take a few minutes to process. If you encounter any issues, feel free to contact me on Discord or open a pull request.
+
 # Changelog Version 1.2.2 - Release Date: 2025-05-09
 **Added:**
 
