@@ -12,6 +12,19 @@ ZaZa Hub is a powerful and customizable script for Roblox, providing a variety o
 
 ESP (Extra Sensory Perception): Displays boxes, lines, and player names around other players, along with health bars and distance indicators for in-game targets. Aimbot: Automatically aims at the closest player to the cursor with customizable smoothness for a more natural feel. Fly: Allows the player to fly around the map with adjustable flight speed. Speed & Jump Power: Modifies the player's walking speed and jump height. Noclip: Lets the player walk through walls and other obstacles. Name Changer: Alters the player's displayed in-game name locally. Save & Interface Management: Save and load custom configurations, themes, and settings using the SaveManager and InterfaceManager add-ons. This script provides an intuitive and feature-packed experience for Roblox users looking for an edge in gameplay, with a focus on customization and ease of use.
 
+# Changelog Version 1.2.4 - Release Date: 2025-05-22
+
+**Rewritten:**
+
+* **ESP system fully rewritten** — improved performance, better security, new internal logging system.
+
+**Added:**
+
+* Many **new ESP settings** for greater customization.
+* New **"Debugs" toggle** in the settings tab — currently only available for ESP.
+
+  * Note: ESP debug logs are **incomplete** and still under development.
+
 # Changelog Version 1.2.3 - Release Date: 2025-05-14
 
 **Fixed:**
